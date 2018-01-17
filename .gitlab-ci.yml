@@ -8,6 +8,9 @@ shell:
   script:
     - shellcheck -s sh devinstall
     - checkbashisms devinstall
+  tags:
+        - docker
+
 
 go:
   stage: test
@@ -16,3 +19,6 @@ go:
   artifacts:
     paths:
       - coverage.txt
+  tags:
+        - docker
+
