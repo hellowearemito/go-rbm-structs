@@ -1,0 +1,18 @@
+stages:
+  - test
+variables:
+  PKG_NAME: "chatbot/google-rcs-structs"
+shell:
+  stage: test
+  image: gitlab-registry.mito.hu/ci-images/shellscript:2.0
+  script:
+    - shellcheck -s sh devinstall
+    - checkbashisms devinstall
+
+go:
+  stage: test
+  image: golang
+  script: "./go-ci.sh"
+  artifacts:
+    paths:
+      - coverage.txt

@@ -1,0 +1,31 @@
+!/bin/sh
+
+# This script prepares your development environment.
+
+prereq=0
+if ! go version >/dev/null 2>&1; then
+	echo "Cannot find go."
+	echo "Please install it: https://golang.org/"
+	echo ""
+	prereq=1
+fi
+
+if [ $prereq -eq 1 ]; then
+	exit 1
+fi
+
+echo "Installing go tools"
+
+echo "govendor"
+go get -u github.com/kardianos/govendor
+echo ""
+
+echo "goconvey"
+go get -u github.com/smartystreets/goconvey
+echo ""
+
+echo "Installing go dependencies"
+govendor sync
+echo ""
+
+echo "All done."

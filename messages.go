@@ -34,16 +34,16 @@ const MessageAttributeType = "message"
 
 // BaseMessage represents the base messages structure.
 type BaseMessage struct {
-	Attributes    Attributes
-	MessageID     string
-	PublishedTime time.Time
+	Attributes  Attributes
+	MessageID   string
+	PublishTime time.Time
 }
 
 // Attributes represents the attributes structure.
 type Attributes struct {
 	Type        string
-	MessageType *string
-	EventType   *string
+	MessageType *string `json:"message_type"`
+	EventType   *string `json:"event_type"`
 }
 
 // rawMessage represents the raw messages structure.
@@ -78,14 +78,14 @@ type EventMessageData struct {
 	EventID   string
 }
 
-// EventMessage represents the event message structure.
-type EventMessage struct {
-	BaseMessage
-	Data EventMessageData
-}
-
 // UserFileMessageData represents the user file message structure.
 type UserFileMessageData struct {
+	BaseData
+	UserFile UserFile
+}
+
+// UserFile represents the user file structure.
+type UserFile struct {
 	Payload   Payload
 	Thumbnail *Thumbnail
 }
@@ -111,8 +111,15 @@ type UserFileMessage struct {
 	Data UserFileMessageData
 }
 
-// LocationData represents the location data structure.
-type LocationData struct {
+// LocationMessage represents the location message structure.
+type LocationMessage struct {
+	BaseMessage
+	Data LocationMessageData
+}
+
+// LocationMessageData represents the location data structure.
+type LocationMessageData struct {
+	BaseData
 	Location Location
 }
 
@@ -122,8 +129,14 @@ type Location struct {
 	Longitude float32
 }
 
-// SuggestionResponseData represents the suggestion response data structure.
-type SuggestionResponseData struct {
+// SuggestionResponseMessage represents the suggestion response message structure.
+type SuggestionResponseMessage struct {
+	BaseMessage
+	Data SuggestionResponseMessageData
+}
+
+// SuggestionResponseMessageData represents the suggestion response data structure.
+type SuggestionResponseMessageData struct {
 	BaseData
 	SuggestionResponse SuggestionResponse
 }
@@ -134,8 +147,20 @@ type SuggestionResponse struct {
 	Text         string
 }
 
-// SuggestionResponseMessage represents the suggestion response message structure.
-type SuggestionResponseMessage struct {
+// DeliveredEventMessage represents the delivered event message structure.
+type DeliveredEventMessage struct {
 	BaseMessage
-	Data SuggestionResponseData
+	Data EventMessageData
+}
+
+// IsTypingEventMessage represents the is typing event message structure.
+type IsTypingEventMessage struct {
+	BaseMessage
+	Data EventMessageData
+}
+
+// ReadEventMessage represents the read event message structure
+type ReadEventMessage struct {
+	BaseMessage
+	Data EventMessageData
 }
