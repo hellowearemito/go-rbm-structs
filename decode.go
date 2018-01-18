@@ -1,6 +1,7 @@
 package rcs
 
 import (
+	b64 "encoding/base64"
 	"encoding/json"
 	"fmt"
 
@@ -16,6 +17,11 @@ func Decode(data []byte) (interface{}, error) {
 		return nil, errors.Wrap(err, "json unmarshal")
 	}
 
+	decodedData, err := b64.StdEncoding.DecodeString(event.Message.Data)
+	if err != nil {
+		return nil, errors.Wrap(err, "data base64 decode")
+	}
+
 	switch event.Message.Attributes.Type {
 	case EventAttributeType:
 		if event.Message.Attributes.EventType == nil {
@@ -25,7 +31,7 @@ func Decode(data []byte) (interface{}, error) {
 		switch *event.Message.Attributes.EventType {
 		case DeliveredEventType:
 			var data EventMessageData
-			err = json.Unmarshal([]byte(event.Message.Data), &data)
+			err = json.Unmarshal(decodedData, &data)
 			if err != nil {
 				return nil, errors.Wrap(err, "json unmarshal delivered data.")
 			}
@@ -35,7 +41,7 @@ func Decode(data []byte) (interface{}, error) {
 			}, nil
 		case ReadEventType:
 			var data EventMessageData
-			err = json.Unmarshal([]byte(event.Message.Data), &data)
+			err = json.Unmarshal(decodedData, &data)
 			if err != nil {
 				return nil, errors.Wrap(err, "json unmarshal read data.")
 			}
@@ -45,7 +51,7 @@ func Decode(data []byte) (interface{}, error) {
 			}, nil
 		case IsTypingEventType:
 			var data EventMessageData
-			err = json.Unmarshal([]byte(event.Message.Data), &data)
+			err = json.Unmarshal(decodedData, &data)
 			if err != nil {
 				return nil, errors.Wrap(err, "json unmarshal read data.")
 			}
@@ -63,7 +69,7 @@ func Decode(data []byte) (interface{}, error) {
 		switch *event.Message.Attributes.MessageType {
 		case TextMessageType:
 			var data TextMessageData
-			err = json.Unmarshal([]byte(event.Message.Data), &data)
+			err = json.Unmarshal(decodedData, &data)
 			if err != nil {
 				return nil, errors.Wrap(err, "json unmarshal text data.")
 			}
@@ -73,7 +79,7 @@ func Decode(data []byte) (interface{}, error) {
 			}, nil
 		case UserFileMessageType:
 			var data UserFileMessageData
-			err = json.Unmarshal([]byte(event.Message.Data), &data)
+			err = json.Unmarshal(decodedData, &data)
 			if err != nil {
 				return nil, errors.Wrap(err, "json unmarshal user file data.")
 			}
@@ -83,7 +89,7 @@ func Decode(data []byte) (interface{}, error) {
 			}, nil
 		case LocationMessageType:
 			var data LocationMessageData
-			err = json.Unmarshal([]byte(event.Message.Data), &data)
+			err = json.Unmarshal(decodedData, &data)
 			if err != nil {
 				return nil, errors.Wrap(err, "json unmarshal location data")
 			}
@@ -93,7 +99,7 @@ func Decode(data []byte) (interface{}, error) {
 			}, nil
 		case SuggestionResponseMessageType:
 			var data SuggestionResponseMessageData
-			err = json.Unmarshal([]byte(event.Message.Data), &data)
+			err = json.Unmarshal(decodedData, &data)
 			if err != nil {
 				return nil, errors.Wrap(err, "json unmarshal suggestion response data")
 			}

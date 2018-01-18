@@ -1,7 +1,6 @@
 package rcs
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -49,7 +48,7 @@ type Attributes struct {
 // rawMessage represents the raw messages structure.
 type rawMessage struct {
 	BaseMessage
-	Data json.RawMessage
+	Data string
 }
 
 // BaseData represents the base data structure.

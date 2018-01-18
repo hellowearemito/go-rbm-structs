@@ -9,7 +9,7 @@ shell:
     - shellcheck -s sh devinstall
     - checkbashisms devinstall
   tags:
-        - docker
+    - docker
 
 
 go:
@@ -20,5 +20,5 @@ go:
     paths:
       - coverage.txt
   tags:
-        - docker
+    - docker
 

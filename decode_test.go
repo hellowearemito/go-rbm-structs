@@ -11,13 +11,7 @@ func TestDecode(t *testing.T) {
 		Convey("Decode Delivered Event Message", func() {
 			req := []byte(`{
 				"message": {
-					"data": {
-						"senderPhoneNumber": "+36702881817",
-						"eventType": "DELIVERED",
-						"eventId": "MsNLrzMfwjRF2uIwU9DBq0ZQ",
-						"messageId": "a9b0e907-3580-4e61-a92e-2cb7d9530bc6",
-						"sendTime": "2018-01-16T16:00:31.007983Z"
-					},
+					"data": "ew0KCQkJCQkJInNlbmRlclBob25lTnVtYmVyIjogIiszNjcwMjg4MTgxNyIsDQoJCQkJCQkiZXZlbnRUeXBlIjogIkRFTElWRVJFRCIsDQoJCQkJCQkiZXZlbnRJZCI6ICJNc05McnpNZndqUkYydUl3VTlEQnEwWlEiLA0KCQkJCQkJIm1lc3NhZ2VJZCI6ICJhOWIwZTkwNy0zNTgwLTRlNjEtYTkyZS0yY2I3ZDk1MzBiYzYiLA0KCQkJCQkJInNlbmRUaW1lIjogIjIwMTgtMDEtMTZUMTY6MDA6MzEuMDA3OTgzWiINCgkJCQkJfQ==",
 					"attributes": {
 						"event_type": "DELIVERED",
 						"type": "event"
@@ -50,13 +44,7 @@ func TestDecode(t *testing.T) {
 			req := []byte(`
 				{
 					"message": {
-						"data": {
-							"senderPhoneNumber": "+36702881817",
-							"eventType": "READ",
-							"eventId": "MsvcQ0LKJRSLqe32sD-nfCfQ",
-							"messageId": "a9b0e907-3580-4e61-a92e-2cb7d9530bc6",
-							"sendTime": "2018-01-16T16:00:32.733778Z"
-						},
+						"data": "ew0KCQkJCQkJCSJzZW5kZXJQaG9uZU51bWJlciI6ICIrMzY3MDI4ODE4MTciLA0KCQkJCQkJCSJldmVudFR5cGUiOiAiUkVBRCIsDQoJCQkJCQkJImV2ZW50SWQiOiAiTXN2Y1EwTEtKUlNMcWUzMnNELW5mQ2ZRIiwNCgkJCQkJCQkibWVzc2FnZUlkIjogImE5YjBlOTA3LTM1ODAtNGU2MS1hOTJlLTJjYjdkOTUzMGJjNiIsDQoJCQkJCQkJInNlbmRUaW1lIjogIjIwMTgtMDEtMTZUMTY6MDA6MzIuNzMzNzc4WiINCgkJCQkJCX0=",
 						"attributes": {
 							"type": "event",
 							"event_type": "READ"
@@ -90,12 +78,7 @@ func TestDecode(t *testing.T) {
 			req := []byte(`
 				{
 					"message": {
-						"data": {
-							"senderPhoneNumber": "+36702881817",
-							"eventType": "IS_TYPING",
-							"eventId": "FKSCga1njmzehi_A",
-							"sendTime": "2018-01-16T15:59:43.710048Z"
-						},
+						"data": "ew0KCQkJCQkJCSJzZW5kZXJQaG9uZU51bWJlciI6ICIrMzY3MDI4ODE4MTciLA0KCQkJCQkJCSJldmVudFR5cGUiOiAiSVNfVFlQSU5HIiwNCgkJCQkJCQkiZXZlbnRJZCI6ICJGS1NDZ2ExbmptemVoaV9BIiwNCgkJCQkJCQkic2VuZFRpbWUiOiAiMjAxOC0wMS0xNlQxNTo1OTo0My43MTAwNDhaIg0KCQkJCQkJfQ==",
 						"attributes": {
 							"type": "event",
 							"event_type": "IS_TYPING"
@@ -129,12 +112,7 @@ func TestDecode(t *testing.T) {
 			req := []byte(`
 				{
 					"message": {
-						"data": {
-							"senderPhoneNumber": "+36702881817",
-							"messageId": "Ms4QPctbWeRgykVPjq9TH6vA",
-							"sendTime": "2018-01-16T15:59:47.419510Z",
-							"text": "😍"
-						},
+						"data": "ew0KCQkJCQkJCSJzZW5kZXJQaG9uZU51bWJlciI6ICIrMzY3MDI4ODE4MTciLA0KCQkJCQkJCSJtZXNzYWdlSWQiOiAiTXM0UVBjdGJXZVJneWtWUGpxOVRINnZBIiwNCgkJCQkJCQkic2VuZFRpbWUiOiAiMjAxOC0wMS0xNlQxNTo1OTo0Ny40MTk1MTBaIiwNCgkJCQkJCQkidGV4dCI6ICLwn5iNIg0KCQkJCQkJfQ==",
 						"attributes": {
 							"type": "message",
 							"message_type": "TEXT"
@@ -168,19 +146,7 @@ func TestDecode(t *testing.T) {
 			req := []byte(`
 				{
 					"message": {
-						"data": {
-							"senderPhoneNumber": "+36702881817",
-							"messageId": "MsWDRuvZvwSPurfMuPlWH2-Q",
-							"sendTime": "2018-01-16T15:59:51.957968Z",
-							"userFile": {
-								"payload": {
-									"mimeType": "image/gif",
-									"fileSizeBytes": 162363,
-									"fileName": "2130837663.gif",
-									"fileUri": "https://storage.googleapis.com/gibe_rcs_copper_dev_test/c4d7d435-c24f-41b0-b736-e6f2eacf31d3/a47391cc57813de4bd93c3a0dc1bed8ea1ba1228455114b29931bfe52064"
-								}
-							}
-						},
+						"data": "ew0KCQkJCQkJCSJzZW5kZXJQaG9uZU51bWJlciI6ICIrMzY3MDI4ODE4MTciLA0KCQkJCQkJCSJtZXNzYWdlSWQiOiAiTXNXRFJ1dlp2d1NQdXJmTXVQbFdIMi1RIiwNCgkJCQkJCQkic2VuZFRpbWUiOiAiMjAxOC0wMS0xNlQxNTo1OTo1MS45NTc5NjhaIiwNCgkJCQkJCQkidXNlckZpbGUiOiB7DQoJCQkJCQkJCSJwYXlsb2FkIjogew0KCQkJCQkJCQkJIm1pbWVUeXBlIjogImltYWdlL2dpZiIsDQoJCQkJCQkJCQkiZmlsZVNpemVCeXRlcyI6IDE2MjM2MywNCgkJCQkJCQkJCSJmaWxlTmFtZSI6ICIyMTMwODM3NjYzLmdpZiIsDQoJCQkJCQkJCQkiZmlsZVVyaSI6ICJodHRwczovL3N0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vZ2liZV9yY3NfY29wcGVyX2Rldl90ZXN0L2M0ZDdkNDM1LWMyNGYtNDFiMC1iNzM2LWU2ZjJlYWNmMzFkMy9hNDczOTFjYzU3ODEzZGU0YmQ5M2MzYTBkYzFiZWQ4ZWExYmExMjI4NDU1MTE0YjI5OTMxYmZlNTIwNjQiDQoJCQkJCQkJCX0NCgkJCQkJCQl9DQoJCQkJCQl9",
 						"attributes": {
 							"type": "message",
 							"message_type": "USER_FILE"
@@ -219,15 +185,7 @@ func TestDecode(t *testing.T) {
 			req := []byte(`
 				{
 					"message": {
-						"data": {
-							"senderPhoneNumber": "+36702881817",
-							"messageId": "Ms7TchISq9SCCRepoxMtHz4Q",
-							"sendTime": "2018-01-16T15:59:54.845236Z",
-							"location": {
-								"latitude": 47.5025895,
-								"longitude": 19.0492885
-							}
-						},
+						"data": "ew0KCQkJCQkJCSJzZW5kZXJQaG9uZU51bWJlciI6ICIrMzY3MDI4ODE4MTciLA0KCQkJCQkJCSJtZXNzYWdlSWQiOiAiTXM3VGNoSVNxOVNDQ1JlcG94TXRIejRRIiwNCgkJCQkJCQkic2VuZFRpbWUiOiAiMjAxOC0wMS0xNlQxNTo1OTo1NC44NDUyMzZaIiwNCgkJCQkJCQkibG9jYXRpb24iOiB7DQoJCQkJCQkJCSJsYXRpdHVkZSI6IDQ3LjUwMjU4OTUsDQoJCQkJCQkJCSJsb25naXR1ZGUiOiAxOS4wNDkyODg1DQoJCQkJCQkJfQ0KCQkJCQkJfQ==",
 						"attributes": {
 							"type": "message",
 							"message_type": "LOCATION"
@@ -264,15 +222,7 @@ func TestDecode(t *testing.T) {
 			req := []byte(`
 				{
 					"message": {
-						"data": {
-							"senderPhoneNumber": "+36702881817",
-							"messageId": "Ms=Tf9X0YJQ1udXLQBegLAKg",
-							"sendTime": "2018-01-16T16:00:34.689694Z",
-							"suggestionResponse": {
-								"postbackData": "alma",
-								"text": "Hello"
-							}
-						},
+						"data": "ew0KCQkJCQkJCSJzZW5kZXJQaG9uZU51bWJlciI6ICIrMzY3MDI4ODE4MTciLA0KCQkJCQkJCSJtZXNzYWdlSWQiOiAiTXM9VGY5WDBZSlExdWRYTFFCZWdMQUtnIiwNCgkJCQkJCQkic2VuZFRpbWUiOiAiMjAxOC0wMS0xNlQxNjowMDozNC42ODk2OTRaIiwNCgkJCQkJCQkic3VnZ2VzdGlvblJlc3BvbnNlIjogew0KCQkJCQkJCQkicG9zdGJhY2tEYXRhIjogImFsbWEiLA0KCQkJCQkJCQkidGV4dCI6ICJIZWxsbyINCgkJCQkJCQl9DQoJCQkJCQl9",
 						"attributes": {
 							"message_type": "SUGGESTION_RESPONSE",
 							"type": "message"
