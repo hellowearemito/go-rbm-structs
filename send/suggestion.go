@@ -3,7 +3,6 @@ package send
 import (
 	"encoding/json"
 	"errors"
-	"time"
 )
 
 // Suggestion represents the suggestion structure.
@@ -177,15 +176,15 @@ type Location struct {
 
 // CreateCalendarEventAction represents the create calendar event action structure.
 type CreateCalendarEventAction struct {
-	StartTime   time.Time
-	EndTime     time.Time
-	Title       string
-	Description string
+	StartTime   string `json:"startTime"`
+	EndTime     string `json:"endTime"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
 }
 
 // OpenURLAction represents the open url action structure.
 type OpenURLAction struct {
-	URL string
+	URL string `json:"url"`
 }
 
 // ShareLocationAction represents the share location action structure.

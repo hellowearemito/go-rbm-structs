@@ -3,7 +3,6 @@ package rcs
 import (
 	b64 "encoding/base64"
 	"encoding/json"
-	"fmt"
 
 	"github.com/pkg/errors"
 )
@@ -111,12 +110,4 @@ func Decode(data []byte) (interface{}, error) {
 	}
 
 	return nil, nil
-}
-
-func akarmi() {
-	message, _ := Decode([]byte(``))
-	switch message := message.(type) {
-	case TextMessage:
-		fmt.Println(message.Data)
-	}
 }
