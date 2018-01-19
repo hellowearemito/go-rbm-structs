@@ -7,7 +7,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-// Decode decodes the given data to the appropriate event or message struct
+// Decode decodes the given data to the appropriate event or message struct.
 func Decode(data []byte) (interface{}, error) {
 	var event Event
 

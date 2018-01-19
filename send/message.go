@@ -2,40 +2,41 @@ package send
 
 // FileUploadRequest represents the file upload request structure.
 type FileUploadRequest struct {
-	FileURL string
+	FileURL string `json:"fileUrl"`
 }
 
 // FileUploadResponse represents the file upload response structure.
 type FileUploadResponse struct {
-	Name string
+	Name string `json:"name"`
 }
 
 // BaseMessage represents the base message structure.
 type BaseMessage struct {
-	Suggestions *Suggestion
-}
-
-// AddSuggestion assigns the given suggestion to the base message.
-func (bm *BaseMessage) AddSuggestion(s Suggestion) {
-	bm.Suggestions = &s
+	Suggestions *Suggestion `json:"suggestions"`
 }
 
 // TextMessage represents the text message structure.
 type TextMessage struct {
 	BaseMessage
-	Text string
+	Text string `json:"text"`
 }
 
 // FileMessage represents the file message structure.
 type FileMessage struct {
 	BaseMessage
-	FileName string
+	FileName string `json:"fileName"`
 }
 
-// RichCardMessage represents the rich card message structure.
-type RichCardMessage struct {
-	CarouselCard   *CarouselCard
-	StandaloneCard *StandaloneCard
+// CarouselCardMessage is represents the carousel card message structure. The CarouselCardMessage is a kind of rich card.
+type CarouselCardMessage struct {
+	BaseMessage
+	CarouselCard CarouselCard `json:"carouselCard"`
+}
+
+// StandaloneCardMessage is represents the standalone card message structure. The StandaloneCardMessage is a kind of rich card.
+type StandaloneCardMessage struct {
+	BaseMessage
+	StandaloneCard StandaloneCard `json:"standaloneCard"`
 }
 
 // Width represents the width enum.
@@ -50,15 +51,15 @@ const (
 
 // CarouselCard represents the carousel card structure.
 type CarouselCard struct {
-	CardWidth    Width
-	CardContents []CardContent
+	CardWidth    Width         `json:"cardWidth"`
+	CardContents []CardContent `json:"cardContents"`
 }
 
 // StandaloneCard represents the standalone card structure.
 type StandaloneCard struct {
-	CardOrientation         Orientation
-	ThumbnailImageAlignment Alignment
-	CardContent             CardContent
+	CardOrientation         Orientation `json:"cardOrientation"`
+	ThumbnailImageAlignment Alignment   `json:"thumbnailImageAlignment"`
+	CardContent             CardContent `json:"cardContent"`
 }
 
 // Orientation represents the orientation enum.
@@ -83,10 +84,10 @@ const (
 
 // CardContent represents the card content structure.
 type CardContent struct {
-	Title       string
-	Description string
-	Media       Media
-	Suggestions Suggestion
+	Title       string     `json:"title"`
+	Description string     `json:"description"`
+	Media       Media      `json:"media"`
+	Suggestions Suggestion `json:"suggestions"`
 }
 
 // Height represents the height enum.
@@ -103,6 +104,6 @@ const (
 
 // Media represents the media sturcture.
 type Media struct {
-	FileName string
-	Height   Height
+	FileName string `json:"fileName"`
+	Height   Height `json:"height"`
 }
