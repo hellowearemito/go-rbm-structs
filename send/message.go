@@ -1,5 +1,7 @@
 package send
 
+import "encoding/json"
+
 // FileUploadRequest represents the file upload request structure.
 type FileUploadRequest struct {
 	FileURL string `json:"fileUrl"`
@@ -13,6 +15,19 @@ type FileUploadResponse struct {
 // BaseMessage represents the base message structure.
 type BaseMessage struct {
 	Suggestions *Suggestion `json:"suggestions"`
+}
+
+// MarshalJSON for the suggestion structure.
+func (bm BaseMessage) MarshalJSON() ([]byte, error) {
+	var message interface{}
+
+	message = struct {
+		ContentMessage interface{} `json:"contentMessage"`
+	}{
+		ContentMessage: bm,
+	}
+
+	return json.Marshal(message)
 }
 
 // TextMessage represents the text message structure.
