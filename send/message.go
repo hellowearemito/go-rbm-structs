@@ -90,10 +90,10 @@ const (
 
 // CardContent represents the card content structure.
 type CardContent struct {
-	Title       string     `json:"title"`
-	Description string     `json:"description"`
-	Media       Media      `json:"media"`
-	Suggestions Suggestion `json:"suggestions"`
+	Title       *string     `json:"title"`
+	Description *string     `json:"description"`
+	Media       Media       `json:"media"`
+	Suggestions *Suggestion `json:"suggestions"`
 }
 
 const (
