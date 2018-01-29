@@ -4,32 +4,32 @@ import (
 	"time"
 )
 
-// DeliveredEventType contains the delivered event string.
-const DeliveredEventType = "DELIVERED"
+const (
+	// DeliveredEventType contains the delivered event string.
+	DeliveredEventType = "DELIVERED"
+	// IsTypingEventType contains the is typing event string.
+	IsTypingEventType = "IS_TYPING"
+	// ReadEventType contains the read event string.
+	ReadEventType = "READ"
+)
 
-// IsTypingEventType contains the is typing event string.
-const IsTypingEventType = "IS_TYPING"
+const (
+	// TextMessageType contains the type of text message string.
+	TextMessageType = "TEXT"
+	// UserFileMessageType contains the type of user file message string.
+	UserFileMessageType = "USER_FILE"
+	// LocationMessageType contains the type of location message string.
+	LocationMessageType = "LOCATION"
+	// SuggestionResponseMessageType contains the suggestion response message string.
+	SuggestionResponseMessageType = "SUGGESTION_RESPONSE"
+)
 
-// ReadEventType contains the read event string.
-const ReadEventType = "READ"
-
-// TextMessageType contains the type of text message string.
-const TextMessageType = "TEXT"
-
-// UserFileMessageType contains the type of user file message string.
-const UserFileMessageType = "USER_FILE"
-
-// LocationMessageType contains the type of location message string.
-const LocationMessageType = "LOCATION"
-
-// SuggestionResponseMessageType contains the suggestion response message string.
-const SuggestionResponseMessageType = "SUGGESTION_RESPONSE"
-
-// EventAttributeType contains the type of event attribute string.
-const EventAttributeType = "event"
-
-// MessageAttributeType contains the type of message attribute string.
-const MessageAttributeType = "message"
+const (
+	// EventAttributeType contains the type of event attribute string.
+	EventAttributeType = "event"
+	// MessageAttributeType contains the type of message attribute string.
+	MessageAttributeType = "message"
+)
 
 // BaseMessage represents the base messages structure.
 type BaseMessage struct {
