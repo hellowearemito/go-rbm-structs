@@ -14,7 +14,7 @@ type FileUploadResponse struct {
 
 // BaseMessage represents the base message structure.
 type BaseMessage struct {
-	Suggestions *Suggestion `json:"suggestions"`
+	Suggestions []Suggestion `json:"suggestions"`
 }
 
 // MarshalJSON for the suggestion structure.
@@ -95,10 +95,10 @@ const (
 
 // CardContent represents the card content structure.
 type CardContent struct {
-	Title       *string     `json:"title"`
-	Description *string     `json:"description"`
-	Media       Media       `json:"media"`
-	Suggestions *Suggestion `json:"suggestions"`
+	Title       *string      `json:"title"`
+	Description *string      `json:"description"`
+	Media       Media        `json:"media"`
+	Suggestions []Suggestion `json:"suggestions"`
 }
 
 const (
