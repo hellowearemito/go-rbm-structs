@@ -30,6 +30,11 @@ func (bm BaseMessage) MarshalJSON() ([]byte, error) {
 	return json.Marshal(message)
 }
 
+// SuggestionMessage represents the suggestion message structure.
+type SuggestionMessage struct {
+	BaseMessage
+}
+
 // TextMessage represents the text message structure.
 type TextMessage struct {
 	BaseMessage
