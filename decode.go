@@ -8,23 +8,26 @@ import (
 )
 
 // Decode decodes the given data to the appropriate event or message struct.
-func Decode(data []byte) (interface{}, error) {
+func Decode(data []byte) (subscription string, returnData interface{}, err error) {
 	var event Event
 
-	err := json.Unmarshal(data, &event)
+	err = json.Unmarshal(data, &event)
 	if err != nil {
-		return nil, errors.Wrap(err, "json unmarshal")
+		err = errors.Wrap(err, "json unmarshal")
+		return
 	}
 
 	decodedData, err := b64.StdEncoding.DecodeString(event.Message.Data)
 	if err != nil {
-		return nil, errors.Wrap(err, "data base64 decode")
+		err = errors.Wrap(err, "data base64 decode")
+		return
 	}
 
 	switch event.Message.Attributes.Type {
 	case EventAttributeType:
 		if event.Message.Attributes.EventType == nil {
-			return nil, errors.New("Missing event type for event")
+			err = errors.New("Missing event type for event")
+			return
 		}
 
 		switch *event.Message.Attributes.EventType {
@@ -32,37 +35,47 @@ func Decode(data []byte) (interface{}, error) {
 			var data EventMessageData
 			err = json.Unmarshal(decodedData, &data)
 			if err != nil {
-				return nil, errors.Wrap(err, "json unmarshal delivered data.")
+				err = errors.Wrap(err, "json unmarshal delivered data.")
+				return
 			}
-			return DeliveredEventMessage{
+			returnData = DeliveredEventMessage{
 				BaseMessage: event.Message.BaseMessage,
 				Data:        data,
-			}, nil
+			}
+
+			return
 		case ReadEventType:
 			var data EventMessageData
 			err = json.Unmarshal(decodedData, &data)
 			if err != nil {
-				return nil, errors.Wrap(err, "json unmarshal read data.")
+				err = errors.Wrap(err, "json unmarshal read data.")
+				return
 			}
-			return ReadEventMessage{
+			returnData = ReadEventMessage{
 				BaseMessage: event.Message.BaseMessage,
 				Data:        data,
-			}, nil
+			}
+
+			return
 		case IsTypingEventType:
 			var data EventMessageData
 			err = json.Unmarshal(decodedData, &data)
 			if err != nil {
-				return nil, errors.Wrap(err, "json unmarshal read data.")
+				err = errors.Wrap(err, "json unmarshal read data.")
+				return
 			}
-			return IsTypingEventMessage{
+			returnData = IsTypingEventMessage{
 				BaseMessage: event.Message.BaseMessage,
 				Data:        data,
-			}, nil
+			}
+
+			return
 		}
 
 	case MessageAttributeType:
 		if event.Message.Attributes.MessageType == nil {
-			return nil, errors.New("Missing event type for event")
+			err = errors.New("Missing event type for event")
+			return
 		}
 
 		switch *event.Message.Attributes.MessageType {
@@ -70,44 +83,56 @@ func Decode(data []byte) (interface{}, error) {
 			var data TextMessageData
 			err = json.Unmarshal(decodedData, &data)
 			if err != nil {
-				return nil, errors.Wrap(err, "json unmarshal text data.")
+				err = errors.Wrap(err, "json unmarshal text data.")
+				return
 			}
-			return TextMessage{
+			returnData = TextMessage{
 				BaseMessage: event.Message.BaseMessage,
 				Data:        data,
-			}, nil
+			}
+
+			return
 		case UserFileMessageType:
 			var data UserFileMessageData
 			err = json.Unmarshal(decodedData, &data)
 			if err != nil {
-				return nil, errors.Wrap(err, "json unmarshal user file data.")
+				err = errors.Wrap(err, "json unmarshal user file data.")
+				return
 			}
-			return UserFileMessage{
+			returnData = UserFileMessage{
 				BaseMessage: event.Message.BaseMessage,
 				Data:        data,
-			}, nil
+			}
+
+			return
 		case LocationMessageType:
 			var data LocationMessageData
 			err = json.Unmarshal(decodedData, &data)
 			if err != nil {
-				return nil, errors.Wrap(err, "json unmarshal location data")
+				err = errors.Wrap(err, "json unmarshal location data")
+				return
 			}
-			return LocationMessage{
+			returnData = LocationMessage{
 				BaseMessage: event.Message.BaseMessage,
 				Data:        data,
-			}, nil
+			}
+
+			return
 		case SuggestionResponseMessageType:
 			var data SuggestionResponseMessageData
 			err = json.Unmarshal(decodedData, &data)
 			if err != nil {
-				return nil, errors.Wrap(err, "json unmarshal suggestion response data")
+				err = errors.Wrap(err, "json unmarshal suggestion response data")
+				return
 			}
-			return SuggestionResponseMessage{
+			returnData = SuggestionResponseMessage{
 				BaseMessage: event.Message.BaseMessage,
 				Data:        data,
-			}, nil
+			}
+
+			return
 		}
 	}
 
-	return nil, nil
+	return
 }
