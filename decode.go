@@ -17,6 +17,8 @@ func Decode(data []byte) (subscription string, returnData interface{}, err error
 		return
 	}
 
+	subscription = string(event.Subscription)
+
 	decodedData, err := b64.StdEncoding.DecodeString(event.Message.Data)
 	if err != nil {
 		err = errors.Wrap(err, "data base64 decode")
