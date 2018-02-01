@@ -6,6 +6,10 @@ import (
 	. "github.com/smartystreets/goconvey/convey"
 )
 
+const (
+	Sub = "projects/onyx-shoreline-191612/subscriptions/test-push-subscription"
+)
+
 func TestDecode(t *testing.T) {
 	Convey("Decode", t, func() {
 		Convey("Decode Delivered Event Message", func() {
@@ -24,8 +28,10 @@ func TestDecode(t *testing.T) {
 				"subscription": "projects/onyx-shoreline-191612/subscriptions/test-push-subscription"
 			}`)
 
-			msg, err := Decode(req)
+			subscription, msg, err := Decode(req)
 			So(err, ShouldBeNil)
+			So(subscription, ShouldNotBeNil)
+			So(subscription, ShouldEqual, Sub)
 
 			switch msg := msg.(type) {
 			case DeliveredEventMessage:
@@ -58,8 +64,10 @@ func TestDecode(t *testing.T) {
 				}
 			`)
 
-			msg, err := Decode(req)
+			subscription, msg, err := Decode(req)
 			So(err, ShouldBeNil)
+			So(subscription, ShouldNotBeNil)
+			So(subscription, ShouldEqual, Sub)
 
 			switch msg := msg.(type) {
 			case ReadEventMessage:
@@ -92,8 +100,10 @@ func TestDecode(t *testing.T) {
 				}
 			`)
 
-			msg, err := Decode(req)
+			subscription, msg, err := Decode(req)
 			So(err, ShouldBeNil)
+			So(subscription, ShouldNotBeNil)
+			So(subscription, ShouldEqual, Sub)
 
 			switch msg := msg.(type) {
 			case IsTypingEventMessage:
@@ -126,8 +136,10 @@ func TestDecode(t *testing.T) {
 				}	
 			`)
 
-			msg, err := Decode(req)
+			subscription, msg, err := Decode(req)
 			So(err, ShouldBeNil)
+			So(subscription, ShouldNotBeNil)
+			So(subscription, ShouldEqual, Sub)
 
 			switch msg := msg.(type) {
 			case TextMessage:
@@ -160,8 +172,10 @@ func TestDecode(t *testing.T) {
 				}
 			`)
 
-			msg, err := Decode(req)
+			subscription, msg, err := Decode(req)
 			So(err, ShouldBeNil)
+			So(subscription, ShouldNotBeNil)
+			So(subscription, ShouldEqual, Sub)
 
 			switch msg := msg.(type) {
 			case UserFileMessage:
@@ -199,8 +213,10 @@ func TestDecode(t *testing.T) {
 				}
 			`)
 
-			msg, err := Decode(req)
+			subscription, msg, err := Decode(req)
 			So(err, ShouldBeNil)
+			So(subscription, ShouldNotBeNil)
+			So(subscription, ShouldEqual, Sub)
 
 			switch msg := msg.(type) {
 			case LocationMessage:
@@ -236,8 +252,10 @@ func TestDecode(t *testing.T) {
 				}	
 			`)
 
-			msg, err := Decode(req)
+			subscription, msg, err := Decode(req)
 			So(err, ShouldBeNil)
+			So(subscription, ShouldNotBeNil)
+			So(subscription, ShouldEqual, Sub)
 
 			switch msg := msg.(type) {
 			case SuggestionResponseMessage:
