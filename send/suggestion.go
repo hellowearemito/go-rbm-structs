@@ -16,7 +16,7 @@ func (s Suggestion) MarshalJSON() ([]byte, error) {
 	var suggestion interface{}
 	if s.Action == nil {
 		suggestion = struct {
-			Reply SuggestedBase `json:"reply"`
+			Reply SuggestedBase `json:"reply,omitempty"`
 		}{
 			Reply: s.SuggestedBase,
 		}
@@ -24,7 +24,7 @@ func (s Suggestion) MarshalJSON() ([]byte, error) {
 		switch action := s.Action.(type) {
 		case DialAction:
 			suggestion = struct {
-				Action dialActionWrapper `json:"action"`
+				Action dialActionWrapper `json:"action,omitempty"`
 			}{
 				Action: dialActionWrapper{
 					SuggestedBase: s.SuggestedBase,
@@ -33,7 +33,7 @@ func (s Suggestion) MarshalJSON() ([]byte, error) {
 			}
 		case ViewLocationAction:
 			suggestion = struct {
-				Action viewLocationActionWrapper `json:"action"`
+				Action viewLocationActionWrapper `json:"action,omitempty"`
 			}{
 				Action: viewLocationActionWrapper{
 					SuggestedBase:      s.SuggestedBase,
@@ -42,7 +42,7 @@ func (s Suggestion) MarshalJSON() ([]byte, error) {
 			}
 		case CreateCalendarEventAction:
 			suggestion = struct {
-				Action createCalendarEventActionWrapper `json:"action"`
+				Action createCalendarEventActionWrapper `json:"action,omitempty"`
 			}{
 				Action: createCalendarEventActionWrapper{
 					SuggestedBase:             s.SuggestedBase,
@@ -51,7 +51,7 @@ func (s Suggestion) MarshalJSON() ([]byte, error) {
 			}
 		case OpenURLAction:
 			suggestion = struct {
-				Action openURLActionWrapper `json:"action"`
+				Action openURLActionWrapper `json:"action,omitempty"`
 			}{
 				Action: openURLActionWrapper{
 					SuggestedBase: s.SuggestedBase,
@@ -60,7 +60,7 @@ func (s Suggestion) MarshalJSON() ([]byte, error) {
 			}
 		case ShareLocationAction:
 			suggestion = struct {
-				Action shareLocationActionWrapper `json:"action"`
+				Action shareLocationActionWrapper `json:"action,omitempty"`
 			}{
 				Action: shareLocationActionWrapper{
 					SuggestedBase:       s.SuggestedBase,
@@ -122,69 +122,69 @@ type suggestionUnmarshaller struct {
 
 // SuggestedBase represents the base suggestion structure.
 type SuggestedBase struct {
-	Text         string `json:"text"`
-	PostbackData string `json:"postbackData"`
+	Text         string `json:"text,omitempty"`
+	PostbackData string `json:"postbackData,omitempty"`
 }
 
 // dialActionWrapper represnts the dial action wrapper structure.
 type dialActionWrapper struct {
 	SuggestedBase
-	DialAction DialAction `json:"dialAction"`
+	DialAction DialAction `json:"dialAction,omitempty"`
 }
 
 // viewLocationActionWrapper represents the view location wrapper structure.
 type viewLocationActionWrapper struct {
 	SuggestedBase
-	ViewLocationAction ViewLocationAction `json:"viewLocationAction"`
+	ViewLocationAction ViewLocationAction `json:"viewLocationAction,omitempty"`
 }
 
 // createCalendarEventActionWrapper represents the create calendar event action wrapper structure.
 type createCalendarEventActionWrapper struct {
 	SuggestedBase
-	CreateCalendarEventAction CreateCalendarEventAction `json:"createCalendarEventAction"`
+	CreateCalendarEventAction CreateCalendarEventAction `json:"createCalendarEventAction,omitempty"`
 }
 
 // openURLActionWrapper represents the open url action wrapper structure.
 type openURLActionWrapper struct {
 	SuggestedBase
-	OpenURLAction OpenURLAction `json:"openUrlAction"`
+	OpenURLAction OpenURLAction `json:"openUrlAction,omitempty"`
 }
 
 // shareLocationActionWrapper represents the share location action wrapper structure.
 type shareLocationActionWrapper struct {
 	SuggestedBase
-	ShareLocationAction ShareLocationAction `json:"shareLocationAction"`
+	ShareLocationAction ShareLocationAction `json:"shareLocationAction,omitempty"`
 }
 
 // DialAction represents the dial action structure.
 type DialAction struct {
-	PhoneNumber string `json:"phoneNumber"`
+	PhoneNumber string `json:"phoneNumber,omitempty"`
 }
 
 // ViewLocationAction represents the view location action structure.
 type ViewLocationAction struct {
-	LatLong Location `json:"latLong"`
-	Label   string   `json:"label"`
-	Query   string   `json:"query"`
+	LatLong Location `json:"latLong,omitempty"`
+	Label   string   `json:"label,omitempty"`
+	Query   string   `json:"query,omitempty"`
 }
 
 // Location represents the location structure.
 type Location struct {
-	Latitude  float32 `json:"latitude"`
-	Longitude float32 `json:"longitude"`
+	Latitude  float32 `json:"latitude,omitempty"`
+	Longitude float32 `json:"longitude,omitempty"`
 }
 
 // CreateCalendarEventAction represents the create calendar event action structure.
 type CreateCalendarEventAction struct {
-	StartTime   string `json:"startTime"`
-	EndTime     string `json:"endTime"`
-	Title       string `json:"title"`
-	Description string `json:"description"`
+	StartTime   string `json:"startTime,omitempty"`
+	EndTime     string `json:"endTime,omitempty"`
+	Title       string `json:"title,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 // OpenURLAction represents the open url action structure.
 type OpenURLAction struct {
-	URL string `json:"url"`
+	URL string `json:"url,omitempty"`
 }
 
 // ShareLocationAction represents the share location action structure.

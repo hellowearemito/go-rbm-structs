@@ -2,17 +2,17 @@ package send
 
 // FileUploadRequest represents the file upload request structure.
 type FileUploadRequest struct {
-	FileURL string `json:"fileUrl"`
+	FileURL string `json:"fileUrl,omitempty"`
 }
 
 // FileUploadResponse represents the file upload response structure.
 type FileUploadResponse struct {
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 // BaseMessage represents the base message structure.
 type BaseMessage struct {
-	Suggestions []Suggestion `json:"suggestions"`
+	Suggestions []Suggestion `json:"suggestions,omitempty"`
 }
 
 // SuggestionMessage represents the suggestion message structure.
@@ -23,28 +23,28 @@ type SuggestionMessage struct {
 // TextMessage represents the text message structure.
 type TextMessage struct {
 	BaseMessage
-	Text string `json:"text"`
+	Text string `json:"text,omitempty"`
 }
 
 // FileMessage represents the file message structure.
 type FileMessage struct {
 	BaseMessage
-	FileName string `json:"fileName"`
+	FileName string `json:"fileName,omitempty"`
 }
 
 type RichCardMessage struct {
 	BaseMessage
-	Card interface{} `json:"richCard"`
+	Card interface{} `json:"richCard,omitempty"`
 }
 
 // CarouselCardMessage is represents the carousel card message structure. The CarouselCardMessage is a kind of rich card.
 type CarouselCardMessage struct {
-	CarouselCard CarouselCard `json:"carouselCard"`
+	CarouselCard CarouselCard `json:"carouselCard,omitempty"`
 }
 
 // StandaloneCardMessage is represents the standalone card message structure. The StandaloneCardMessage is a kind of rich card.
 type StandaloneCardMessage struct {
-	StandaloneCard StandaloneCard `json:"standaloneCard"`
+	StandaloneCard StandaloneCard `json:"standaloneCard,omitempty"`
 }
 
 const (
@@ -56,15 +56,15 @@ const (
 
 // CarouselCard represents the carousel card structure.
 type CarouselCard struct {
-	CardWidth    string        `json:"cardWidth"`
-	CardContents []CardContent `json:"cardContents"`
+	CardWidth    string        `json:"cardWidth,omitempty"`
+	CardContents []CardContent `json:"cardContents,omitempty"`
 }
 
 // StandaloneCard represents the standalone card structure.
 type StandaloneCard struct {
-	CardOrientation         string      `json:"cardOrientation"`
-	ThumbnailImageAlignment string      `json:"thumbnailImageAlignment"`
-	CardContent             CardContent `json:"cardContent"`
+	CardOrientation         string      `json:"cardOrientation,omitempty"`
+	ThumbnailImageAlignment string      `json:"thumbnailImageAlignment,omitempty"`
+	CardContent             CardContent `json:"cardContent,omitempty"`
 }
 
 const (
@@ -83,10 +83,10 @@ const (
 
 // CardContent represents the card content structure.
 type CardContent struct {
-	Title       *string      `json:"title"`
-	Description *string      `json:"description"`
-	Media       Media        `json:"media"`
-	Suggestions []Suggestion `json:"suggestions"`
+	Title       *string      `json:"title,omitempty"`
+	Description *string      `json:"description,omitempty"`
+	Media       Media        `json:"media,omitempty"`
+	Suggestions []Suggestion `json:"suggestions,omitempty"`
 }
 
 const (
@@ -100,6 +100,6 @@ const (
 
 // Media represents the media sturcture.
 type Media struct {
-	FileName string `json:"fileName"`
-	Height   string `json:"height"`
+	FileName string `json:"fileName,omitempty"`
+	Height   string `json:"height,omitempty"`
 }
