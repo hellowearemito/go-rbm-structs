@@ -85,7 +85,7 @@ const (
 type CardContent struct {
 	Title       *string      `json:"title,omitempty"`
 	Description *string      `json:"description,omitempty"`
-	Media       Media        `json:"media,omitempty"`
+	Media       *Media       `json:"media,omitempty"`
 	Suggestions []Suggestion `json:"suggestions,omitempty"`
 }
 
