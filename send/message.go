@@ -32,15 +32,18 @@ type FileMessage struct {
 	FileName string `json:"fileName"`
 }
 
+type RichCardMessage struct {
+	BaseMessage
+	Card interface{} `json:"richCard"`
+}
+
 // CarouselCardMessage is represents the carousel card message structure. The CarouselCardMessage is a kind of rich card.
 type CarouselCardMessage struct {
-	BaseMessage
 	CarouselCard CarouselCard `json:"carouselCard"`
 }
 
 // StandaloneCardMessage is represents the standalone card message structure. The StandaloneCardMessage is a kind of rich card.
 type StandaloneCardMessage struct {
-	BaseMessage
 	StandaloneCard StandaloneCard `json:"standaloneCard"`
 }
 
