@@ -17,6 +17,8 @@ type BaseMessage struct {
 
 // SuggestionMessage represents the suggestion message structure.
 type SuggestionMessage struct {
+	Text     string           `json:"text,omitempty"`
+	RichCard *RichCardMessage `json:"richCard,omitempty"`
 	BaseMessage
 }
 
