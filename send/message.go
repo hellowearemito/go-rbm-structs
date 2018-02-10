@@ -12,7 +12,9 @@ type FileUploadResponse struct {
 
 // BaseMessage represents the base message structure.
 type BaseMessage struct {
-	Suggestions []Suggestion `json:"suggestions"`
+	Text        string           `json:"text,omitempty"`
+	RichCard    *RichCardMessage `json:"richCard,omitempty"`
+	Suggestions []Suggestion     `json:"suggestions,omitempty"`
 }
 
 // SuggestionMessage represents the suggestion message structure.
