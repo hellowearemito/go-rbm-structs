@@ -17,7 +17,7 @@ fi
 echo "Installing go tools"
 
 echo "govendor"
-go get -u github.com/kardianos/govendor
+go get -u github.com/golang/dep/cmd/dep
 echo ""
 
 echo "goconvey"
@@ -25,7 +25,7 @@ go get -u github.com/smartystreets/goconvey
 echo ""
 
 echo "Installing go dependencies"
-govendor sync
+dep ensure
 echo ""
 
 echo "All done."

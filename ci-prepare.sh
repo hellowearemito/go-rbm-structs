@@ -15,6 +15,6 @@ export GOPATH
 GOPATH=$(readlink -f .)/.go
 PATH="$GOPATH/bin:$PATH"
 cd "$GOPATH/src/$PKG_NAME" || exit 1
-go get -u github.com/kardianos/govendor
+go get -u github.com/golang/dep/cmd/dep
 go get -u github.com/mibk/g..
-govendor sync -v
+dep ensure
