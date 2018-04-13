@@ -1,2 +1,1 @@
-Google RCS structs [![build status](https://gitlab.mito.hu/chatbot/google-rcs-structs/badges/master/build.svg)](https://gitlab.mito.hu/chatbot/google-rcs-structs/commits/master) [![coverage report](https://gitlab.mito.hu/chatbot/google-rcs-structs/badges/master/coverage.svg)](https://gitlab.mito.hu/chatbot/google-rcs-structs/commits/master)
-=========
+# go-rbm-structs
