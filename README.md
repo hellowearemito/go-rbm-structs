@@ -4,5 +4,5 @@ The package collects the required structs for rbm platform with the supported co
 
 ## Installation
 
-```go get github.com/hellowearemito/go-rbm-structs.git```
+```$ go get github.com/hellowearemito/go-rbm-structs.git```
 
