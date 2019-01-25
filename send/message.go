@@ -32,7 +32,8 @@ type TextMessage struct {
 // FileMessage represents the file message structure.
 type FileMessage struct {
 	BaseMessage
-	FileName string `json:"fileName,omitempty"`
+	FileName    string       `json:"fileName,omitempty"`
+	ContentInfo *ContentInfo `json:"contentInfo,omitempty"`
 }
 
 type RichCardMessage struct {
