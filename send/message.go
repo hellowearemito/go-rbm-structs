@@ -103,6 +103,14 @@ const (
 
 // Media represents the media sturcture.
 type Media struct {
-	FileName string `json:"fileName,omitempty"`
-	Height   string `json:"height,omitempty"`
+	FileName    string       `json:"fileName,omitempty"`
+	Height      string       `json:"height"`
+	ContentInfo *ContentInfo `json:"contentInfo,omitempty"`
+}
+
+// ContentInfo containing the content information.
+type ContentInfo struct {
+	FileURL      string `json:"fileUrl"`
+	ThumbnailURL string `json:"thumbnailUrl,omitempty"`
+	ForceRefresh bool   `json:"forceRefresh"`
 }
